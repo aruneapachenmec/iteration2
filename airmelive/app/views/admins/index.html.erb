@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="event_container">
+            <h1><%= link_to  "Event list" , show_path %> </h1></br>
+            <h1>Event Creation</h1>
+            <%= form_for @event,:html => { :multipart => true }, :url => {:controller => "admins", :action => "create"} do |f| %>
+            <%= flash[:notice] %>
+            <%= @file.public_url if @file%>
+            <p> <%= f.label :eventname %></br> <%= f.text_field :eventname%> </p>
+            <p> <%= f.label :category %></br><%= f.text_field :category%> </p>
+            <p>
+                <%= f.label :registrationopen %><br />
+                <%= f.date_select :registrationopen, :start_year=>2012 %>
+            </p>
+
+            <p>
+                <%= f.label :registrationclose %><br />
+                <%= f.date_select :registrationclose, :start_year=>2012 %>
+            </p>
+
+            <p>
+                <%= f.label :auditionopen %><br />
+                <%= f.date_select :auditionopen, :start_year=>2012 %>
+            </p>
+
+            <p>
+                <%= f.label :auditionclose %><br />
+                <%= f.date_select :auditionclose, :start_year=>2012 %>
+            </p>
+
+            <p>
+                <%= f.label :eventopen %><br />
+                <%= f.date_select :eventopen, :start_year=>2012 %>
+            </p>
+
+            <p>
+                <%= f.label :eventclose %><br />
+                <%= f.date_select :eventclose, :start_year=>2012 %>
+            </p>
+            <p> <%= f.label :description %></br><%= f.text_field :description%> </p>
+            <p> <%= f.label :rules %></br><%= f.text_field :rules%> </p>
+            <%= f.file_field :avatar %></br>
+            <%= button_tag 'Reset', :type => 'reset' %>
+            <%= f.submit "Create" %>
+            <% end %>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="span7 offset3">  
+        <div class="form-actions">      
+            <legend class="section"><h3>Personal Info</h3></legend>
+            <%= form_for @user, :url => update_path, :html => { :multipart => true, method: "patch", :id => "login_details"} do |f| %>
+                <h4>
+                    <%= f.label :name %><br>
+                    <%= f.text_field :name %><br>
+                    
+                    <%= f.label :age %> <br>
+                    <%= f.text_field :age %><br>
+                    
+                    <%= f.label :city %><br>
+                    <%= f.text_field :city %><br>
+                    
+                    <%= f.label :country %><br>
+                    <%= f.text_field :country %><br>
+                    
+                    <%= f.label :mobile %><br>
+                    <%= f.text_field :mobile %><br>
+                    
+                    <%= f.label :image%><br>
+                    <%= f.file_field :avatar %><br>
+                    
+                    <legend class="section"><h3>About Yourself</h3></legend>
+                    
+                    <%= f.label :likes %><br>
+                    <%= f.text_field :likes %><br>
+                    
+                    <%= f.label :dislikes %><br>
+                    <%= f.text_field :dislikes %><br>
+                    
+                    <%= f.label :ambition %><br>
+                    <%= f.text_field :ambition %><br>
+                    
+                    <%= f.label :talents %><br>
+                    <%= f.text_field :talent %><br>
+                    
+                    <%= f.label :aboutme %><br>
+                    <%= f.text_field :aboutme %><br>
+                </h4>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-large btn-primary" id ="update">Update</button>
+            <% end %>
+        </div>                
+    </div>
+</div>
+<!-- Custom java script included for text field validation -->
+<%= javascript_include_tag "user_details" %>

@@ -1,0 +1,69 @@
+<br><br>
+<div class = "container">
+
+    <div class="row">
+        <div class="col-md-6" style="padding-left:0px">
+            <div class="span6 " style="margin-left: 29px;">
+                <section class="widget tiny_head">
+                    <h3><%= link_to "Upcoming Events" ,upcomingevents_path,:style => 'text-decoration: none' %> </h3>
+                </section>
+            </div>
+            <div class = "span6">
+                <div class = "navig">
+                    <% @up_events.each do |t| %>
+                        <div class="span6" style="margin-left: -5px;">
+                            <section class="widget tiny_event">
+                                <header>
+                                    <h4>
+                                        <%= link_to t.eventname.upcase , upcoming_each_path(t),:style => 'text-decoration: none'  %> 
+                                    </h4>
+                                </header>
+                                <%= image_tag t.avatar.url ,:class => 'image_show' %>
+                                <div class="body">
+                                    <% if session[:user_id] %>
+                                    <% unless @user.email == "airmelive@gmail.com" %>
+                                    <%= button_to "participate", upcoming_path(t), class: "btn btn-success" %><br><br>
+                                    <% end %>
+                                    <% else %>
+                                    <%= button_to "participate", upcoming_path(t), class: "btn btn-success" %><br><br>
+                                    <% end %>
+                                </div>
+                            </section> 
+                        </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-left:120px;">
+            <div class="span4 " >
+                <section class="widget tiny_head">
+                    <h3><%= link_to "On Going Events" ,ongoingevents_path,:style => 'text-decoration: none' %> </h3>
+                </section>
+            </div>
+            <div class = "span4">
+                <div class = "navi">
+                    <% @on_events.each do |t| %>
+                        <div class="span4" style="margin-left: 2px;max-width:350px;">
+                            <section class="widget tiny_event">
+                                <header>
+                                    <h4>
+                                        <%= link_to t.eventname.upcase , upcoming_each_path(t),:style => 'text-decoration: none'  %> 
+                                    </h4>
+                                </header>
+                                <%= image_tag t.avatar.url ,:class => 'image_show' %>
+                                <div class="body">
+                                    <%= button_to "Vote", upcomingevents_path, class: "btn btn-success" %><br><br>
+                                </div>
+                            </section> 
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+
+ 
